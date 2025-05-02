@@ -29,7 +29,6 @@ const signIn = () => {
         // console.log(gotten[i].userEmail);
         if(inMail.value == gotten[i].userEmail && passwordIn.value == gotten[i].pWord)  {
             found = true;
-            // window.location.href = 'index.html'
             
         } 
     }
@@ -52,9 +51,12 @@ const signIn = () => {
         `
         setTimeout(() => {
             sub.innerHTML = 'Submit'
-        }, 3000)
+        }, 2000)
         
     }
+    setInterval(()=>{
+        window.location.href = 'dashboard.html'
+      }, 1000)
    // window.location.href = 'index.html' 
 }
 

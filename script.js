@@ -13,7 +13,7 @@ const toast = (text, background, color, position = "right") => {
         },
         onClick: function () { } // Callback after click
     }).showToast();
-
+ 
 }
 
 const allUsers = []
@@ -46,12 +46,15 @@ const signUp = () => {
         `
         setTimeout(() => {
             sub.innerHTML = 'Submit'
-        }, 3000)
+        }, 2000)
 
         document.getElementById("firstName").value = ""
         document.getElementById("lastName").value = ""
         document.getElementById("eMail").value = ""
         document.getElementById("passWord").value = ""
     }
-   window.location.href = 'signin.html'
+    
+  setInterval(()=>{
+    window.location.href = 'signin.html'
+  }, 1000)
 }

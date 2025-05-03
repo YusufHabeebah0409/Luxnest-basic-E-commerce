@@ -19,18 +19,17 @@ const toast = (text, background, color, position = "right") => {
 
 const gotten = JSON.parse(localStorage.getItem("users"));
 const signIn = () => {
-    if(inMail.value == "" || passwordIn.value == ""){  
-        alert("Please fill all the fields")
+    if (inMail.value == "" || passwordIn.value == "") {
+        toast("Please fill all the fields","red","white")
     }
 
     let found = false;
 
     for (let i = 0; i < gotten.length; i++) {
         // console.log(gotten[i].userEmail);
-        if(inMail.value == gotten[i].userEmail && passwordIn.value == gotten[i].pWord)  {
+        if (inMail.value == gotten[i].userEmail && passwordIn.value == gotten[i].pWord) {
             found = true;
-            
-        } 
+        }
     }
 
     if (found == false) {
@@ -52,12 +51,12 @@ const signIn = () => {
         setTimeout(() => {
             sub.innerHTML = 'Submit'
         }, 2000)
-        
+
     }
-    setInterval(()=>{
+    setInterval(() => {
         window.location.href = 'dashboard.html'
-      }, 1000)
-   // window.location.href = 'index.html' 
+    }, 1000)
+    // window.location.href = 'index.html' 
 }
 
 

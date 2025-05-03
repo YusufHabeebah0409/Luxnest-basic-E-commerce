@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Luxnest Store</title>
+    <!-- Toastify CSS  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
      <h1>Welcome to dashboard</h1>
+     <input type="text" placeholder="Input Your Product" id="product">
+     <button onclick="addProduct()"> Add Product</button>
+     <table id="show"></table>
+     <button onclick="delAll()" id="allDel" style="display: none;"> Delete All Product</button>
 </body>
+<!-- Toastify JS  -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- Js  -->
+<script src="dashboard.js"></script>
 </html>

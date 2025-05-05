@@ -18,6 +18,9 @@ const toast = (text, background, color, position = "right") => {
 
 cart = []
 let allIndex = ""
+if (localStorage.getItem('Product')) {
+    cart = JSON.parse(localStorage.getItem('Product'));
+}
 const addProduct = () => {
     if (product.value.trim() === "") {
         toast("Input A Product ", "red", "white", "left")
@@ -32,6 +35,7 @@ const delProduct = (num) => {
     const conDel = confirm(" Are you sure You want to Delete , This action is not reversible")
      if (conDel === true) {
         cart.splice(num, 1)
+        localStorage.setItem("Product", JSON.stringify(cart))
         display()
      } else {
         display()
@@ -40,12 +44,23 @@ const delProduct = (num) => {
 
 const delAll = () => {
     cart=[]
+    localStorage.setItem("Product", JSON.stringify(cart))
     display()
 }
 
 const editProduct = (data,nub) => {
-     product.value = data
+    updateProduct.value = data
      allIndex = nub
+}
+
+const saveItem = () => {
+    setTimeout(() => {
+        toast("Product Updated Successfully", "green", "white")
+    },1000)
+    cart.splice(allIndex, 1, updateProduct.value)
+    localStorage.setItem("Product", JSON.stringify(cart))
+    display()
+    
 }
 
 
@@ -54,10 +69,24 @@ const display = () => {
     cart.map((item, index) => {
         show.innerHTML += `
         <tr>
-            <td>${index + 1}.</td>
-            <td>${item}</td>
-            <td><button onclick='editProduct(${JSON.stringify(item)},${index})'> Edit</button></td>
-            <td><button onclick='delProduct(${index})'> Delete</button></td>
+            <td class="table-light fs-3 text-center">${index + 1}.</td>
+            <td class="table-light fs-3 text-center">${item}</td>
+
+            <td class="table-light">
+
+            <button onclick='editProduct(${JSON.stringify(item)},${index})' data-bs-toggle="modal" data-bs-target="#exampleModal" class=" btn btn-info text-center w-50 "> 
+                 <img src="./icons8-create-24.png" alt="">
+            </button>
+
+            </td>
+
+            <td class="table-light">
+
+            <button onclick='delProduct(${index})' class=" btn btn-danger text-center w-50 ">          
+                <img src="./icons8-delete-30.png" alt="">
+                </button>
+
+            </td>
         </tr>
        `
     })
@@ -68,3 +97,5 @@ const display = () => {
         allDel.style.display = "none" 
     }
 }
+
+display()

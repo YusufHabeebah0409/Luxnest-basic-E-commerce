@@ -1,4 +1,4 @@
-const toast = (text, background, color, position = "right") => {
+const toast = (text, background, color, position = "left") => {
     Toastify({
         text,
         duration: 3000,
@@ -13,31 +13,15 @@ const toast = (text, background, color, position = "right") => {
         },
         onClick: function () { } // Callback after click
     }).showToast();
-
+ 
 }
 
 
-const gotten = JSON.parse(localStorage.getItem("users"));
 const signIn = () => {
-    if (inMail.value == "" || passwordIn.value == "") {
-        toast("Please fill all the fields","red","white")
-    }
-
-    let found = false;
-
-    for (let i = 0; i < gotten.length; i++) {
-        // console.log(gotten[i].userEmail);
-        if (inMail.value == gotten[i].userEmail && passwordIn.value == gotten[i].pWord) {
-            found = true;
-        }
-    }
-
-    if (found == false) {
-        toast("Invalid email or password 😒", "red", "white")
-    } else {
-        toast("Login successful 🎉", "green", "white")
+    if (eMail.value == "" || passWord.value == "") {
+        toast("Please fill all the fields 😠", "red", "white")
         sub.innerHTML = `
-        <div class="dot-spinner">
+         <div class="dot-spinner">
     <div class="dot-spinner__dot"></div>
     <div class="dot-spinner__dot"></div>
     <div class="dot-spinner__dot"></div>
@@ -46,18 +30,47 @@ const signIn = () => {
     <div class="dot-spinner__dot"></div>
     <div class="dot-spinner__dot"></div>
     <div class="dot-spinner__dot"></div>
-</div>
+        </div>
         `
         setTimeout(() => {
-            sub.innerHTML = 'Submit'
-        }, 2000)
+            sub.innerHTML = 'Sign In'
+        },2000)
 
-    }
-    setInterval(() => {
-        window.location.href = 'dashboard.html'
-    }, 1000)
-    // window.location.href = 'index.html' 
+    } 
+    
+    // else {
+    //     sub.innerHTML = `
+    //     <div class="dot-spinner">
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //       <div class="dot-spinner__dot"></div>
+    //     </div>
+    // `
+        
+    //     const userEmail = document.getElementById("eMail").value
+    //     const pWord = document.getElementById("passWord").value
+
+    //     const user = { fName, lName, userEmail, pWord }
+    //     allUsers.push(user)
+    //     toast("User created successfully 🎉", "green", "white")
+        
+        
+       
+    //     document.getElementById("eMail").value = ""
+    //     document.getElementById("passWord").value = ""
+
+    //     localStorage.setItem("users", JSON.stringify(allUsers))
+
+    //     setTimeout(() => {
+    //         window.location.href = 'signin.html'
+    //     }, 1000)
+        
+    // }
+    
+  
 }
-
-
-

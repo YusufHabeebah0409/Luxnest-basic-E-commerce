@@ -65,7 +65,6 @@ const signUp = () => {
 
         const user = { fName, lName, userEmail, pWord }
         allUsers.push(user)
-        localStorage.setItem("users", JSON.stringify(allUsers))
         toast("User created successfully 🎉", "green", "white")
         
         
@@ -73,6 +72,8 @@ const signUp = () => {
         document.getElementById("lastName").value = ""
         document.getElementById("eMail").value = ""
         document.getElementById("passWord").value = ""
+
+        localStorage.setItem("users", JSON.stringify(allUsers))
 
         setTimeout(() => {
             window.location.href = 'signin.html'

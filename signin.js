@@ -1,3 +1,6 @@
+let gottenUsers = JSON.parse(localStorage.getItem('users')) || []
+console.log(gottenUsers);
+
 const toast = (text, background, color, position = "left") => {
     Toastify({
         text,
@@ -19,17 +22,17 @@ const toast = (text, background, color, position = "left") => {
 
 const signIn = () => {
     if (eMail.value == "" || passWord.value == "") {
-        toast("Please fill all the fields 😠", "red", "white")
+        toast("Please in the Input 😠", "red", "white")
         sub.innerHTML = `
          <div class="dot-spinner">
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
         </div>
         `
         setTimeout(() => {
@@ -38,39 +41,42 @@ const signIn = () => {
 
     } 
     
-    // else {
-    //     sub.innerHTML = `
-    //     <div class="dot-spinner">
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //       <div class="dot-spinner__dot"></div>
-    //     </div>
-    // `
+    else {
+        sub.innerHTML = `
+        <div class="dot-spinner">
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+        </div>
+    `
         
-    //     const userEmail = document.getElementById("eMail").value
-    //     const pWord = document.getElementById("passWord").value
+        const userEmail = document.getElementById("eMail").value
+        const pWord = document.getElementById("passWord").value
 
-    //     const user = { fName, lName, userEmail, pWord }
-    //     allUsers.push(user)
-    //     toast("User created successfully 🎉", "green", "white")
-        
-        
-       
-    //     document.getElementById("eMail").value = ""
-    //     document.getElementById("passWord").value = ""
+        const  signInObj = { userEmail, pWord }
+        console.log(signInObj);
 
-    //     localStorage.setItem("users", JSON.stringify(allUsers))
-
-    //     setTimeout(() => {
-    //         window.location.href = 'signin.html'
-    //     }, 1000)
+        let found = gottenUsers.find(user=>user.userEmail == userEmail && user.pWord == pWord)
+        console.log(found);
         
-    // }
+        if(found == undefined) {
+            toast('User not found', '#f01400', '#fff')
+        } else {
+                toast('Sign in successful😁', '#006400', '#fff')
+                setTimeout(()=>{
+                    window.location.href = 'dashboard.html'
+                }, 1000)
+        }
+    
+    
+        document.getElementById("eMail").value = ""
+        document.getElementById("passWord").value = ""
+    }
     
   
 }

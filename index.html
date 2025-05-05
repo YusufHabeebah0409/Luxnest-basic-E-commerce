@@ -12,15 +12,25 @@
 </head>
 
 <body>
-    <h2>sign up to Luxnest</h2>
-    <input type="text" placeholder="First Name" id="firstName" autofocus>
-    <input type="text" placeholder="Last Name" id="lastName">
-    <input type="email" placeholder="Email" id="eMail">
-    <input type="password" placeholder="Password" id="passWord">
-    <button onclick="signUp()">
-    <span id="sub"> Sign Up  </span>
+    <div class="between">
+        <div class="container">
+            <h3 class="heading">Sign up to Luxnest</h3>
+        <div class="form">
+            <input type="text" placeholder="First Name" id="firstName" autofocus required="" class="input" >
+            <input type="text" placeholder="Last Name" id="lastName" required="" class="input">
+            <input type="email" placeholder="Email" id="eMail" required="" class="input">
+            <input type="password" placeholder="Password" id="passWord" required="" class="input">
+            <span class="forgot-password">Already have an account? <a href="./signin.html">Sign in</a></span>
+    
+            <button onclick="signUp()">
+                <span id="sub"> Sign Up</span>
+            </button>
+            </div>
+        </div>
+    </div>
+    
+
         
-    </button>
 </body>
 <!-- Toastify JS  -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

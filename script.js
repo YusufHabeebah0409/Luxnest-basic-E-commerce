@@ -1,4 +1,4 @@
-const toast = (text, background, color, position = "right") => {
+const toast = (text, background, color, position = "left") => {
     Toastify({
         text,
         duration: 3000,
@@ -16,13 +16,48 @@ const toast = (text, background, color, position = "right") => {
  
 }
 
-const allUsers = []
+let allUsers = []
+
+if(localStorage.users){
+    let retrieved = JSON.parse(localStorage.getItem("users"))
+    console.log(retrieved);
+    allUsers = retrieved
+} else {
+    allUsers = []
+}
 
 const signUp = () => {
     if (firstName.value == "" || lastName.value == "" || eMail.value == "" || passWord.value == "") {
         toast("Please fill all the fields 😠", "red", "white")
+        sub.innerHTML = `
+         <div class="dot-spinner">
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+        </div>
+        `
+        setTimeout(() => {
+            sub.innerHTML = 'Sign Up'
+        },2000)
 
     } else {
+        sub.innerHTML = `
+        <div class="dot-spinner">
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+        </div>
+    `
         const fName = document.getElementById("firstName").value
         const lName = document.getElementById("lastName").value
         const userEmail = document.getElementById("eMail").value
@@ -32,29 +67,18 @@ const signUp = () => {
         allUsers.push(user)
         localStorage.setItem("users", JSON.stringify(allUsers))
         toast("User created successfully 🎉", "green", "white")
-        sub.innerHTML = `
-        <div class="dot-spinner">
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-</div>
-        `
-        setTimeout(() => {
-            sub.innerHTML = 'Submit'
-        }, 2000)
-
+        
+        
         document.getElementById("firstName").value = ""
         document.getElementById("lastName").value = ""
         document.getElementById("eMail").value = ""
         document.getElementById("passWord").value = ""
+
+        setTimeout(() => {
+            window.location.href = 'signin.html'
+        }, 1000)
+        
     }
     
-  setInterval(()=>{
-    window.location.href = 'signin.html'
-  }, 1000)
+  
 }

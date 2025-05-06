@@ -62,7 +62,7 @@ const signIn = () => {
         console.log(signInObj);
 
         let found = gottenUsers.find(user=>user.userEmail == userEmail && user.pWord == pWord)
-        console.log(found);
+        localStorage.person = JSON.stringify(found)
         
         if(found == undefined) {
             toast('User not found', '#f01400', '#fff')

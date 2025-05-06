@@ -1,3 +1,31 @@
+const checkPerson = () => {
+    if (localStorage.person) {
+        const signedInUser = JSON.parse(localStorage.getItem('person'))
+        console.log(signedInUser);
+        showPerson.innerHTML = `<h4 class="my-3 text-center">Welcome ${signedInUser.fName} ${signedInUser.lName},</h4>`
+        // signin
+    } else {
+        body.innerHTML = `<h4 class="my-3 text-center">You are not signed in, redirecting you to sign in...</h4>`
+        setTimeout(() => {
+            window.location.href = 'signin.html'
+        }, 1500)
+    }
+}
+checkPerson()
+
+const signOut = () => {
+    const conDel = confirm(" Are you sure You want to Sign Out , This action is not reversible")
+    if (conDel === true) {
+        toast("Sign Out Successfully", "green", "white")
+        localStorage.removeItem('person')
+        checkPerson()
+    } else {
+        checkPerson()
+    }
+    
+}
+
+
 const toast = (text, background, color, position = "right") => {
     Toastify({
         text,

@@ -1,4 +1,4 @@
-const toast = (text, background, color, position = "left") => {
+const toast = (text, background, color, position = "right") => {
     Toastify({
         text,
         duration: 3000,
@@ -13,12 +13,12 @@ const toast = (text, background, color, position = "left") => {
         },
         onClick: function () { } // Callback after click
     }).showToast();
- 
+
 }
 
 let allUsers = []
 
-if(localStorage.users){
+if (localStorage.users) {
     let retrieved = JSON.parse(localStorage.getItem("users"))
     console.log(retrieved);
     allUsers = retrieved
@@ -31,19 +31,19 @@ const signUp = () => {
         toast("Please fill all the fields 😠", "red", "white")
         sub.innerHTML = `
          <div class="dot-spinner">
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-        </div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+         </div>
         `
         setTimeout(() => {
             sub.innerHTML = 'Sign Up'
-        },2000)
+        }, 1500)
 
     } else {
         sub.innerHTML = `
@@ -64,22 +64,28 @@ const signUp = () => {
         const pWord = document.getElementById("passWord").value
 
         const user = { fName, lName, userEmail, pWord }
-        allUsers.push(user)
-        toast("User created successfully 🎉", "green", "white")
-        
-        
-        document.getElementById("firstName").value = ""
-        document.getElementById("lastName").value = ""
-        document.getElementById("eMail").value = ""
-        document.getElementById("passWord").value = ""
+        let found = allUsers.find(eachUser => eachUser.userEmail == userEmail)
+        if (found == undefined) {
+            allUsers.push(user)
+            toast("User created successfully 🎉", "green", "white")
+            console.log(allUsers);
 
-        localStorage.setItem("users", JSON.stringify(allUsers))
+            document.getElementById("firstName").value = ""
+            document.getElementById("lastName").value = ""
+            document.getElementById("eMail").value = ""
+            document.getElementById("passWord").value = ""
 
-        setTimeout(() => {
-            window.location.href = 'signin.html'
-        }, 1000)
-        
+            localStorage.setItem("users", JSON.stringify(allUsers))
+
+            setTimeout(() => {
+                window.location.href = 'signin.html'
+            }, 1000)
+
+        } else {
+            toast("Account already exist, Kindly sign in with your details", "blue", "white")
+            setTimeout(() => {
+                sub.innerHTML = 'Sign Up'
+            }, 1500)
+        }
     }
-    
-  
 }

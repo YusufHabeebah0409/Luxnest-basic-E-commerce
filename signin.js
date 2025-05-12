@@ -77,6 +77,4 @@ const signIn = () => {
         document.getElementById("eMail").value = ""
         document.getElementById("passWord").value = ""
     }
-    
-  
 }

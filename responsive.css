@@ -1,0 +1,75 @@
+
+
+/* Mobile */
+@media only screen and (max-width: 500px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .container, .main, .content, .form-container {
+    max-width: 95%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+ 
+
+  .dashboard-section, .card, .form-group, .button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 80%;
+    height: 3em;
+    background-color: #0099ff;
+    border-radius: 30em;
+    font-size: 17px;
+    margin-top:10px ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 25px;
+   }
+  .form .input {
+    width: 85%;
+    padding:  20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Tablet  */
+@media only screen and (min-width: 501px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+    padding: 20px;
+  }
+
+  .container, .main, .content, .form-container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .dashboard-section, .card, .form-group {
+    margin-bottom: 20px;
+  }
+
+  .btn, button {
+    font-size: 17px;
+    padding: 10px 16px;
+  }
+
+  input, select, textarea {
+    font-size: 15px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

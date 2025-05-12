@@ -7,6 +7,12 @@
     padding: 10px;
   }
 
+  .dot-spinner__dot {
+    position: absolute;
+    top: -26px;
+    left: 90px;
+  }
+
   .container, .main, .content, .form-container {
     max-width: 95%;
     padding: 10px;
@@ -41,6 +47,12 @@
     max-width: 100%;
     height: auto;
   }
+
+  .containerBody{
+    max-width: 95%;
+    padding: 15px;
+    margin: 10px;
+   }
 }
 
 /* Tablet  */

@@ -20,7 +20,7 @@ let allUsers = []
 
 if (localStorage.users) {
     let retrieved = JSON.parse(localStorage.getItem("users"))
-    console.log(retrieved);
+    // console.log(retrieved);
     allUsers = retrieved
 } else {
     allUsers = []
@@ -43,7 +43,7 @@ const signUp = () => {
         `
         setTimeout(() => {
             sub.innerHTML = 'Sign Up'
-        }, 1500)
+        }, 1000)
 
     } else {
         sub.innerHTML = `
@@ -64,28 +64,29 @@ const signUp = () => {
         const pWord = document.getElementById("passWord").value
 
         const user = { fName, lName, userEmail, pWord }
-        let found = allUsers.find(eachUser => eachUser.userEmail == userEmail)
+        let found = allUsers.find(eachUser => eachUser.userEmail === userEmail)
+        
         if (found == undefined) {
             allUsers.push(user)
             toast("User created successfully 🎉", "green", "white")
             console.log(allUsers);
+
+            setTimeout(() => {
+                window.location.href = 'signin.html'
+            }, 1500)
+
+            localStorage.setItem("users", JSON.stringify(allUsers))
 
             document.getElementById("firstName").value = ""
             document.getElementById("lastName").value = ""
             document.getElementById("eMail").value = ""
             document.getElementById("passWord").value = ""
 
-            localStorage.setItem("users", JSON.stringify(allUsers))
-
-            setTimeout(() => {
-                window.location.href = 'signin.html'
-            }, 1000)
-
         } else {
             toast("Account already exist, Kindly sign in with your details", "blue", "white")
-            setTimeout(() => {
-                sub.innerHTML = 'Sign Up'
-            }, 1500)
+            // setTimeout(() => {
+            //     sub.innerHTML = 'Sign Up'
+            // }, 2000)
         }
     }
 }

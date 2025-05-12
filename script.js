@@ -65,7 +65,7 @@ const signUp = () => {
 
         const user = { fName, lName, userEmail, pWord }
         let found = allUsers.find(eachUser => eachUser.userEmail === userEmail)
-        
+
         if (found == undefined) {
             allUsers.push(user)
             toast("User created successfully 🎉", "green", "white")
@@ -73,7 +73,7 @@ const signUp = () => {
 
             setTimeout(() => {
                 window.location.href = 'signin.html'
-            }, 1500)
+            }, 2000)
 
             localStorage.setItem("users", JSON.stringify(allUsers))
 
@@ -84,9 +84,9 @@ const signUp = () => {
 
         } else {
             toast("Account already exist, Kindly sign in with your details", "blue", "white")
-            // setTimeout(() => {
-            //     sub.innerHTML = 'Sign Up'
-            // }, 2000)
+            setTimeout(() => {
+                sub.innerHTML = 'Sign Up'
+            }, 1500)
         }
     }
 }
